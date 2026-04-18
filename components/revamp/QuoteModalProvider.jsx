@@ -108,7 +108,7 @@ export default function QuoteModalProvider({ children }) {
       <AnimatePresence>
         {isOpen ? (
           <motion.div
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 px-3 py-3 backdrop-blur-sm sm:px-4 sm:py-6"
+            className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/50 px-3 py-3 backdrop-blur-sm sm:items-center sm:px-4 sm:py-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -119,7 +119,7 @@ export default function QuoteModalProvider({ children }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 14, scale: 0.98 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="relative max-h-[90vh] w-full max-w-[36.5rem] overflow-y-auto rounded-[1rem] bg-white shadow-soft [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:max-h-[86vh] sm:max-w-[38.5rem] sm:rounded-[1.35rem] lg:max-w-[39.5rem]"
+            className="relative my-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-[36.5rem] overflow-y-auto rounded-[1rem] bg-white shadow-soft [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:max-h-[86vh] sm:max-w-[38.5rem] sm:rounded-[1.35rem] lg:max-w-[39.5rem]"
             onClick={(event) => event.stopPropagation()}
           >
               <div className="grid lg:grid-cols-[0.86fr_1.14fr]">
@@ -233,7 +233,7 @@ export default function QuoteModalProvider({ children }) {
                         onChange={(event) => setForm((current) => ({ ...current, notes: event.target.value }))}
                         rows={3}
                         placeholder="Tell us the guest count, setup style, preferred category, or anything else helpful."
-                        className="resize-none rounded-[1rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-3 text-sm text-ink outline-none transition placeholder:text-slate/70 focus:border-accent"
+                        className="resize-none rounded-[1rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-3 text-base text-ink outline-none transition placeholder:text-slate/70 focus:border-accent sm:text-sm"
                       />
                     </label>
 
@@ -270,7 +270,7 @@ function Field({ label, onChange, ...props }) {
       <input
         {...props}
         onChange={(event) => onChange(event.target.value)}
-        className="rounded-[0.95rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-2.5 text-sm text-ink outline-none transition placeholder:text-slate/70 focus:border-accent sm:rounded-[1rem]"
+        className="rounded-[0.95rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-2.5 text-base text-ink outline-none transition placeholder:text-slate/70 focus:border-accent sm:rounded-[1rem] sm:text-sm"
       />
     </label>
   );
@@ -284,7 +284,7 @@ function SelectField({ label, onChange, options, placeholder, disabled = false, 
         {...props}
         disabled={disabled}
         onChange={(event) => onChange(event.target.value)}
-        className="rounded-[0.95rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent disabled:cursor-not-allowed disabled:text-slate sm:rounded-[1rem]"
+        className="rounded-[0.95rem] border border-black/10 bg-[#fcfbfa] px-3.5 py-2.5 text-base text-ink outline-none transition focus:border-accent disabled:cursor-not-allowed disabled:text-slate sm:rounded-[1rem] sm:text-sm"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (
