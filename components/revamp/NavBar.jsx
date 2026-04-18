@@ -101,16 +101,23 @@ export default function NavBar({ logo, services = [], solidOnLoad = false }) {
           </QuoteTrigger>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen((value) => !value)}
-          className={`flex h-11 w-11 items-center justify-center rounded-full border lg:hidden ${
-            solidNav ? "border-black/10 bg-white text-ink" : "border-white/15 bg-white/10 text-white"
-          }`}
-          aria-label="Toggle navigation"
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <RotatingPhoneChip
+            contacts={phoneContacts}
+            light={!solidNav}
+            className="px-3 py-2 text-[12px] max-[380px]:px-2 max-[380px]:text-[11px]"
+          />
+          <button
+            type="button"
+            onClick={() => setMenuOpen((value) => !value)}
+            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border ${
+              solidNav ? "border-black/10 bg-white text-ink" : "border-white/15 bg-white/10 text-white"
+            }`}
+            aria-label="Toggle navigation"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {menuOpen ? (
